@@ -29,6 +29,9 @@ export class AppComponent {
 
 	constructor (private requestService: RequestService) { }
 
+	/**
+	 * Subscribes to the request made by requestService and forwards the result.
+	 */
 	public onSearchMovie () {
 		if (this.searchValue !== '') {
 			this.searching = true;
@@ -38,10 +41,19 @@ export class AppComponent {
 		}
 	}
 
-	public onMovie (url) {
+	/**
+	 * Opens a new tab with the selected movie
+	 * @param {string} url
+	 */
+	public onMovie (url: string) {
 		window.open(url, '_blank');
 	}
 
+	/**
+	 * Handles Movies
+	 * Resets the table with results and adds new movies if there are any.
+	 * @param {Result} data
+	 */
 	private handleMovies (data: Result) {
 		this.searchResult = [];
 		this.searching = false;
@@ -66,7 +78,12 @@ export class AppComponent {
 		}
 	}
 
-	private handleError (msg) {
+	/**
+	 * Handles Error
+	 * Disables spinning icon, hides table and sets an error message
+	 * @param {string} msg
+  */
+	private handleError (msg: string) {
 		this.searchError = true;
 		this.searching = false;
 		this.hidden = true;
