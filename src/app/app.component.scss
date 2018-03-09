@@ -1,27 +1,39 @@
-main { margin: 24px }
-
-mat-card {
-	max-width: 400px;
-	margin: 24px auto 0 auto;
+main {
+  margin: 24px;
 }
 
-mat-form-field { width: 100% }
+mat-card {
+  max-width: 400px;
+  margin: 24px auto 0 auto;
+}
+
+mat-form-field {
+  width: 100%;
+}
 
 .center {
-	width: 30%;
-	height: 80px;
-	margin: 0 auto;
+  width: 30%;
+  height: 80px;
+  margin: 0 auto;
 
-	button { width: 100% }
+  button {
+    width: 100%;
+  }
 
-	mat-spinner { margin: 24px auto 24px auto }
+  mat-spinner {
+    margin: 24px auto 24px auto;
+  }
 }
 
 mat-row:hover {
-	background-color: lightgrey;
-	cursor: pointer;
+  background-color: lightgrey;
+  cursor: pointer;
 }
 
-.hidden { display: none }
+.hidden {
+  display: none
+}
 
-.error { text-align: center }
+.error {
+  text-align: center
+}

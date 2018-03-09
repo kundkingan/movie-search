@@ -15,21 +15,14 @@ export interface Movie {
 	Poster: string
 }
 
+const URL = 'https://www.omdbapi.com/?apikey=62171b8b&type=movie&s=';
+
 @Injectable()
 export class RequestService {
 
-	constructor(private http: HttpClient) { }
+	constructor (private http: HttpClient) { }
 
-	private url = 'https://www.omdbapi.com/?apikey=62171b8b&type=movie&s=';
-	private currentSearchValue;
-
-	public getMovies(searchValue) {
-		this.currentSearchValue = searchValue;
-		return this.http.get<Result>(this.url + searchValue);
+	public getMovies (searchValue) {
+		return this.http.get<Result>(URL + searchValue);
 	}
-
-	public getPage(pageNr) {
-		return this.http.get<Result>(this.url + this.currentSearchValue + '&page=' + pageNr)
-	}
-
 }

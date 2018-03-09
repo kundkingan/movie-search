@@ -1,36 +1,36 @@
 <main>
-	<mat-card>
-		<div class="search">
-			<mat-form-field>
-				<input matInput placeholder="Enter a movie title" value="" [(ngModel)]="searchValue">
-			</mat-form-field>
+    <mat-card>
+        <div class="search">
+            <mat-form-field>
+                <input matInput placeholder="Enter a movie title" value="" [(ngModel)]="searchValue">
+            </mat-form-field>
 
-			<div class="center">
-				<button mat-raised-button color="primary" (click)="onSearchMovie()">Search</button>
-				<mat-spinner *ngIf="searching" [diameter]="20" matSuffix></mat-spinner>
-			</div>
-		</div>
+            <div class="center">
+                <button mat-raised-button color="primary" (click)="onSearchMovie()">Search</button>
+                <mat-spinner *ngIf="searching" [diameter]="20" matSuffix></mat-spinner>
+            </div>
+        </div>
 
-		<div [ngClass]="{'hidden': hidden}" class="result">
+        <div [ngClass]="{'hidden': hidden}" class="result">
 
-			<mat-table #table [dataSource]="dataSource" matSort>
-				<ng-container matColumnDef="year">
-					<mat-header-cell *matHeaderCellDef mat-sort-header> year </mat-header-cell>
-					<mat-cell *matCellDef="let element"> {{element.year}} </mat-cell>
-				</ng-container>
+            <mat-table #table [dataSource]="dataSource" matSort>
+                <ng-container matColumnDef="year">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> year</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.year}}</mat-cell>
+                </ng-container>
 
-				<ng-container matColumnDef="title">
-					<mat-header-cell *matHeaderCellDef mat-sort-header> title </mat-header-cell>
-					<mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
-				</ng-container>
+                <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> title</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.title}}</mat-cell>
+                </ng-container>
 
-				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-				<mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onMovie(row.url)"></mat-row>
-			</mat-table>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onMovie(row.url)"></mat-row>
+            </mat-table>
 
-		</div>
+        </div>
 
-		<p *ngIf="searchError" class="error">{{errorMessage}}</p>
+        <p *ngIf="searchError" class="error">{{errorMessage}}</p>
 
-	</mat-card>
-<main>
+    </mat-card>
+    <main>

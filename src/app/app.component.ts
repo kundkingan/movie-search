@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort, MatTableDataSource } from '@angular/material';
 
-import { RequestService, Result, Movie } from './services/request.service';
+import { RequestService, Result } from './services/request.service';
 
 export interface MovieItem {
 	title: string,
@@ -27,9 +27,9 @@ export class AppComponent {
 	public dataSource;
 	public hidden = true;
 
-	constructor(private requestService: RequestService) {}
+	constructor (private requestService: RequestService) { }
 
-	public onSearchMovie() {
+	public onSearchMovie () {
 		if (this.searchValue !== '') {
 			this.searching = true;
 			this.requestService.getMovies(this.searchValue).subscribe(
@@ -38,15 +38,15 @@ export class AppComponent {
 		}
 	}
 
-	public onMovie(url) {
-		window.open(url, "_blank");
+	public onMovie (url) {
+		window.open(url, '_blank');
 	}
 
-	private handleMovies(data: Result) {
+	private handleMovies (data: Result) {
 		this.searchResult = [];
 		this.searching = false;
 
-		if (data.Response === "False") {
+		if (data.Response === 'False') {
 			this.handleError('No result')
 		} else {
 			this.searchError = false;
@@ -55,18 +55,18 @@ export class AppComponent {
 				let movieItem: MovieItem = {
 					title: movie.Title,
 					year: +movie.Year,
-					url: "http://www.imdb.com/title/" + movie.imdbID
+					url: 'http://www.imdb.com/title/' + movie.imdbID
 				}
 				this.searchResult.push(movieItem)
 			}
-			
+
 			if (this.searchResult.length > 10) this.searchResult.length = 10;
 			this.dataSource = new MatTableDataSource(this.searchResult);
 			this.dataSource.sort = this.sort;
 		}
 	}
 
-	private handleError(msg) {
+	private handleError (msg) {
 		this.searchError = true;
 		this.searching = false;
 		this.hidden = true;
